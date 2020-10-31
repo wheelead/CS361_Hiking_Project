@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<html long="en">
+    <head>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <script src="{{url_for('static', filename='/scripts/trails_script.js')}}"></script>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

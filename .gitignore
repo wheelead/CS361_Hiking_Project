@@ -1,4 +1,5 @@
 venv/
+/test_commits
 
 *.pyc
 __pycache__/
