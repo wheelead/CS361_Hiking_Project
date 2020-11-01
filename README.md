@@ -18,13 +18,14 @@ To run the flask application:
 flask run
 </code></pre>
 
-
-Update 10/31/2020: Made system a multi page setup instead of single and created 2 primitive pages.
+<ul>
+<li>Update 10/31/2020: Made system a multi page setup instead of single and created 2 primitive pages.
 Next step for Feature 2 is to add an api call.  This is proving more complicated than expected.
-Looking into using geopy to get lat and lon to feed into trails api.
-Update 2 10/31/2020: geopy worked.  To use the updated system you will need to install:
+Looking into using geopy to get lat and lon to feed into trails api.</li>
+
+<li>Update 2 10/31/2020: geopy worked.  To use the updated system you will need to install:
 pip install requests
 pip install geopy
 
 reqests is for GET and POST handling
-geopy is used to convert addresses or zips to latitude and longitude (can also be used for maps if google costs money)
+geopy is used to convert addresses or zips to latitude and longitude (can also be used for maps if google costs money)</li>
