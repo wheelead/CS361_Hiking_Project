@@ -26,5 +26,5 @@ Looking into using geopy to get lat and lon to feed into trails api.</li>
 <li>Update 2 10/31/2020: geopy worked.  To use the updated system you will need to install:<br>
 pip install requests<br>
 pip install geopy<br><br>
-reqests is for GET and POST handling
+reqests is for GET and POST handling<br>
 geopy is used to convert addresses or zips to latitude and longitude (can also be used for maps if google costs money)</li>
