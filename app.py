@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from geopy.geocoders import Nominatim
 
 app = Flask(__name__)
 
@@ -8,12 +9,22 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/Trail_List")
+#@app.route("/Trail_List")
+#def trail_list():
+#       return render_template("trail_list.html")
+
+@app.route("/Trail_List", methods=["GET", "POST"])
 def trail_list():
-#    if request.form.get('zip')
-#        zip = request.form.get('zip')
-#
-#        r = requests.get(
-#            'https://www.hikingproject.com/data/get-trails?lat=40.0274&amp;lon=-105.2519&amp;maxDistance=10&amp;key=')
-    return render_template("trail_list.html")
+    tableString = ""
+    if request.method == "POST":
+        zip = request.form.get('zip')
+        address = request.form.get('address')
+        geoGen = Nominatim(user_agent="hikingproject")
+        if zip:
+            place = geoGen.geocode(zip)
+        else:
+            place = geoGen.geocode(address)
+        print("Latitude = {}, Longitude = {}".format(place.latitude, place.longitude))
+
+    return render_template("trail_list.html", tableString = tableString)
 
