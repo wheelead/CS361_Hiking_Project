@@ -23,9 +23,8 @@ flask run
 Next step for Feature 2 is to add an api call.  This is proving more complicated than expected.
 Looking into using geopy to get lat and lon to feed into trails api.</li>
 
-<li>Update 2 10/31/2020: geopy worked.  To use the updated system you will need to install:
-pip install requests
-pip install geopy
-
+<li>Update 2 10/31/2020: geopy worked.  To use the updated system you will need to install:<br>
+pip install requests<br>
+pip install geopy<br><br>
 reqests is for GET and POST handling
 geopy is used to convert addresses or zips to latitude and longitude (can also be used for maps if google costs money)</li>
