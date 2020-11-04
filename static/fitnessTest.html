@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>fitnessTestPage</title>
+
+</head>
+<body>
+
+    <br>
+    <center> <h2> Fitness Test</h2></center>
+    <center> By filling out some basic information, we can gauge your readiness for certain trails, or even recommend some for you!</center>
+    <br>
+    <br>
+    <!-- <form>  -->  <center>
+        What is your age range?
+        <br>
+        <input type="radio" name="ageQ" value=0>11-30
+        <input type="radio" name="ageQ" value=2>31-45
+        <input type="radio" name="ageQ" value=3>46+
+        <br>
+        <br>
+
+        How many miles a week do you currently hike?
+        <br>
+        <input type="radio" name="milesQ" value=4>0
+        <input type="radio" name="milesQ" value=3>1-5
+        <input type="radio" name="milesQ" value=1>6-12
+        <input type="radio" name="milesQ" value=0>13+
+        <br>
+        <br>
+
+        How many hours a week do you exercise?
+        <br>
+        <input type="radio" name="hoursQ" value=4>1-2
+        <input type="radio" name="hoursQ" value=3>3-6
+        <input type="radio" name="hoursQ" value=2>7-9
+        <input type="radio" name="hoursQ" value=1>10+
+        <br>
+        <br>
+
+        Do you have any medical conditions, such as asthma, knee/hip pain, or anything else you believe would impair your ability to hike?
+        <br>
+        <input type="radio" name="medicalQ" value=5>Yes
+        <input type="radio" name="medicalQ" value=0>No
+        <br>
+        <br>
+
+        <button type="button" onclick="displayRadioValues()">
+            Test
+        </button>
+    </center>
+    <!--  </form>  -->
+    <br>
+    <br>
+    <center>
+        <div id="result"> </div>
+    </center>
+
+    <script>
+        function displayRadioValues() {
+
+            var total = 0;
+            var level = 0;
+            var ageTot = 0;
+            var mileTot = 0;
+            var hoursTot = 0;
+            var medA = 0;
+
+            var age = document.getElementsByName('ageQ');
+            for (i = 0; i < age.length; i++) {
+                if (age[i].checked)
+                    var ageTot = age[i].value;
+                var a = parseInt(ageTot, 10);
+            }
+
+            var miles = document.getElementsByName('milesQ');
+            for (i = 0; i < miles.length; i++) {
+                if (miles[i].checked)
+                    mileTot = miles[i].value;
+                var b = parseInt(mileTot, 10);
+            }
+
+            var hours = document.getElementsByName('hoursQ');
+            for (i = 0; i < hours.length; i++) {
+                if (hours[i].checked)
+                    hoursTot = hours[i].value;
+                var c = parseInt(hoursTot, 10);
+            }
+
+            var medical = document.getElementsByName('medicalQ');
+            for (i = 0; i < medical.length; i++) {
+                if (medical[i].checked)
+                    medA = medical[i].value;
+                var d = parseInt(medA, 10);
+            }
+
+            total = a + b + c + d;
+
+            if (total > 11) {
+                level = "Beginner";
+            }
+            if (total < 5) {
+                level = "Advanced";
+            }
+            if (total > 4 && total < 12) {
+                level = "Intermediate";
+            }
+
+            document.getElementById("result").innerHTML
+                = "Your estimated hiking fitness is : " + level;
+        }
+    </script>
+
+
+</body>
+</html>
