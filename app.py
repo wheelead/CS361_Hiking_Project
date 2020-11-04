@@ -1,9 +1,10 @@
+import requests, json
 from flask import Flask, render_template, request
 from geopy.geocoders import Nominatim
 
 app = Flask(__name__)
 
-#API_KEY =
+API_KEY = "200965658-b1cfd20b05f2212f32f16c23ff4a7c3c"
 
 @app.route("/")
 def index():
@@ -15,16 +16,23 @@ def index():
 
 @app.route("/Trail_List", methods=["GET", "POST"])
 def trail_list():
-    tableString = ""
+    tableDict = { "blank" : "blank" }
     if request.method == "POST":
-        zip = request.form.get('zip')
-        address = request.form.get('address')
-        geoGen = Nominatim(user_agent="hikingproject")
-        if zip:
-            place = geoGen.geocode(zip)
-        else:
-            place = geoGen.geocode(address)
-        print("Latitude = {}, Longitude = {}".format(place.latitude, place.longitude))
+        code = request.form.get('input') # user input
+        geoGen = Nominatim(user_agent="hikingproject") # set up system for geocode
+        place = geoGen.geocode(code)  # get lat and lon
+        # print("Latitude = {}, Longitude = {}".format(place.latitude, place.longitude))
 
-    return render_template("trail_list.html", tableString = tableString)
+        # make url for get to hiking project API
+        urlString = "http://www.hikingproject.com/data/get-trails?"
+        # maxDistance upper bound is 300
+        # maxResults upper bound is 500
+        urlString += "lat={}&lon={}&maxDistance={}&key={}&sort=distance"
+        finalUrl = urlString.format(place.latitude, place.longitude, 10, API_KEY)
+        #print(finalUrl)
+
+        # dictionary holding response data
+        tableDict = json.loads(requests.get(finalUrl).content)
+
+    return render_template("trail_list.html", tableDict = tableDict)
 

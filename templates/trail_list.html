@@ -12,12 +12,40 @@
 
     <h3>Please provide either a postal code or address to populate list</h3>
     <form method="post">
-        <label for="zip">Zip Code:</label>
-        <input type="text" id="zip" name="zip"><br><br>
-        <label for="address">Address:</label>
-        <input type="text" id="address" name="address"><br><br>
+        <label for="input">Zip Code or Address:</label>
+        <input type="text" id="input" name="input"><br><br>
         <input type="submit" value="Submit">
     </form>
+
+    <br><br>
+    <table>
+        <tr>
+            <th>name</th><th>summary</th><th>length (mi)</th><th>ascent (ft)</th><th>descent (ft)</th><th>conditionStatus</th><th>conditionDetails</th><th>conditionDate</th>
+        </tr>
+    {% for i in tableDict["trails"] %}
+        <tr>
+            <td> {{ i["name"] }} </td>
+            <td> {{ i["summary"] }} </td>
+            <td> {{ i["length"] }} </td>
+            <td> {{ i["ascent"] }} </td>
+            <td> {{ i["descent"] }} </td>
+            <td> {{ i["conditionStatus"]}} </td>
+            <td> {{ i["conditionDetails"]}} </td>
+            <td> {{ i["conditionDate"]}} </td>
+        </tr>
+    {% endfor %}    
+    </table>
+
+<!-- data dump for debugging -->
+
+    <br><br><br>
+    <h2>Debug Data</h2>
+    {% for i in tableDict["trails"] %}
+    {% for key, value in i.items() %}
+    {{ key }} : {{ value }} <br>
+    {% endfor %}
+    {% endfor %}
+
 
     <script src="{{url_for('static', filename='/scripts/trails_script.js')}}"></script>
 {% endblock %}
