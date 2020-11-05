@@ -11,7 +11,7 @@ def index():
     return render_template("index.html")
 
 @app.route("/fitness")
-def index():
+def fitness():
     return render_template("fitnessTest.html")
 
 #@app.route("/Trail_List")
