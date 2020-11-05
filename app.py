@@ -10,6 +10,10 @@ API_KEY = "200965658-b1cfd20b05f2212f32f16c23ff4a7c3c"
 def index():
     return render_template("index.html")
 
+@app.route("/fitness")
+def index():
+    return render_template("fitnessTest.html")
+
 #@app.route("/Trail_List")
 #def trail_list():
 #       return render_template("trail_list.html")
