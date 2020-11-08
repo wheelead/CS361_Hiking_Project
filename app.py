@@ -27,7 +27,7 @@ def trail_list():
         place = geoGen.geocode(code)  # get lat and lon
         # print("Latitude = {}, Longitude = {}".format(place.latitude, place.longitude))
 
-        # make url for get to hiking project API
+        # make url for get to hiking project API.
         urlString = "http://www.hikingproject.com/data/get-trails?"
         # maxDistance upper bound is 300
         # maxResults upper bound is 500
