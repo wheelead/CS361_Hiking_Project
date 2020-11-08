@@ -22,9 +22,11 @@ flask run
 
 Requirements to run:
 <pre><code>
-pip install flask
-pip install requests
-pip install geopy
+Make sure FLASK_APP points to app.py file.
+You must have Python 3 installed and the following modules:
+* flask
+* requests
+* geopy
 </code></pre>
 
 <!--
