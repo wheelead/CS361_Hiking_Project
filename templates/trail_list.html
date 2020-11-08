@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block body %}
-    <input type='button' id="home_btn" value='Go to Home Page' class="btn">
+<div>
+    <input type='button' id="home_btn" value='Go to Home Page' class="btn btn-primary">
 
     <h1>List of Trails</h1>
 
@@ -18,11 +19,15 @@
     </form>
 
     <br><br>
-    <table>
-        <tr>
-            <th>name</th><th>summary</th><th>length (mi)</th><th>ascent (ft)</th><th>descent (ft)</th><th>conditionStatus</th><th>conditionDetails</th><th>conditionDate</th>
-        </tr>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>name</th><th>summary</th><th>length (mi)</th><th>ascent (ft)</th><th>descent (ft)</th><th>conditionStatus</th><th>conditionDetails</th><th>conditionDate</th>
+            </tr>
+        </thead>
+        
     {% for i in tableDict["trails"] %}
+    <tbody>
         <tr>
             <td> {{ i["name"] }} </td>
             <td> {{ i["summary"] }} </td>
@@ -33,6 +38,8 @@
             <td> {{ i["conditionDetails"]}} </td>
             <td> {{ i["conditionDate"]}} </td>
         </tr>
+    </tbody>
+
     {% endfor %}    
     </table>
 
@@ -49,3 +56,5 @@
 
     <script src="{{url_for('static', filename='/scripts/trails_script.js')}}"></script>
 {% endblock %}
+</div>
+    

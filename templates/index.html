@@ -5,9 +5,12 @@
 {% endblock %}
 
 {% block body %}
+<div>
     <h1>Welcome to the Hiking App Home Page!</h1>
 
     <h3>List of Pages:</h3>
-    <input type='button' id="trail_list_btn" value='Go to Trail List' class="btn">
+    <input type='button' id="trail_list_btn" value='Go to Trail List' class="btn btn-primary">
+</div>
+
     <script src="{{url_for('static', filename='/scripts/index_script.js')}}"></script>
 {% endblock %}
