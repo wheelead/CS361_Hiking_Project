@@ -22,7 +22,7 @@
     <table class="table">
         <thead class="thead-dark">
             <tr>
-                <th>name</th><th>summary</th><th>length (mi)</th><th>ascent (ft)</th><th>descent (ft)</th><th>conditionStatus</th><th>conditionDetails</th><th>conditionDate</th>
+                <th>name</th><th>summary</th><th>length (mi)</th><th>ascent (ft)</th><th>descent (ft)</th><th>conditionStatus</th><th>conditionDetails</th><th>conditionDate</th><th>recommendations</th>
             </tr>
         </thead>
         
@@ -37,6 +37,8 @@
             <td> {{ i["conditionStatus"]}} </td>
             <td> {{ i["conditionDetails"]}} </td>
             <td> {{ i["conditionDate"]}} </td>
+            <td><input type="button" value="Gear & Clothing Recs" name="trailID" onclick="window.location='/recs/{{i.id}}';"></td>
+            <!-- button to redirect to /recs/trailID and it works!! -->
         </tr>
     </tbody>
 
