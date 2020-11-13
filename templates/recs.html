@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <title>Gear and Clothing Recommendations</title>
+{% endblock %}
+
+{% block body %}
+<div>
+<h1>Gear & Clothing Recommendations</h1>
+
+<div class="row">
+{% for i in hikingRecs["recs"] %}
+    <div class="col-xs-12 col-sm-4">
+        <h2>{{ i["name"] }}</h2>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <h3>{{ i["description"] }}</h3>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <img src="../static/img/{{ i["image"] }}" alt={{ i.name }} width="250" height="250" />
+    </div>
+{% endfor %} 
+</div>
+
+<div class="row">
+{% for i in weatherRecs["recs"] %}
+    <div class="col-xs-12 col-sm-4">
+        <h2>{{ i["name"] }}</h2>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <h3>{{ i["description"] }}</h3>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <img src="../static/img/{{ i["image"] }}" alt={{ i.name }} width="250" height="250" />
+    </div>
+{% endfor %} 
+</div>
+    
+
+
+<!-- {% for i in weatherRecs["recs"] %}
+<h2>{{ i["name"] }}</h2>
+<h3>{{ i["description"] }}</h3>
+<img src="../static/img/{{ i["image"] }}" alt={{ i.name }} width="250" height="250" />
+{% endfor %} -->
+
+
+</div>
+{% endblock %}
