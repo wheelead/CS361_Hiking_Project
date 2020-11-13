@@ -1,0 +1,114 @@
+{
+    "gear_recs": [
+        {
+            "name": "Water",
+            "description": "Stay hydrated!",
+            "image": "item3.png",
+            "length": "short",
+            "elevation": true,
+            "condition": "Dry",
+            "essential": true
+        },
+        {
+            "name": "Hydration pack",
+            "description": "This is gonna be a long hike. Consider bringing a hydration pack!",
+            "image": "item4.png",
+            "length": "long",
+            "elevation": true,
+            "condition": "Dry",
+            "essential": false
+        },
+        {
+            "name": "Hiking poles",
+            "description": "Due to the increase in elevation, hiking poles can help stabilize you on your hike!",
+            "image": "item5.png",
+            "length": "short",
+            "elevation": true,
+            "condition": "Uneven",
+            "essential": false
+        },
+        {
+            "name": "Snacks",
+            "description": "description of item",
+            "image": "item6.png",
+            "length": "long",
+            "elevation": false,
+            "condition": "Any",
+            "essential": false
+        },
+        {
+            "name": "Sunscreen",
+            "description": "You always need sunscreen with you, even if it's not sunny! Remember to reapply every 45 minutes.",
+            "image": "item11.png",
+            "length": "short",
+            "elevation": false,
+            "condition": "Dry",
+            "essential": true
+        },
+        {
+            "name": "Sunglasses",
+            "description": "It's gonna be a sunny day so protect your eyes with sunglasses!",
+            "image": "item12.png",
+            "length": "medium",
+            "elevation": true,
+            "condition": "Sunny",
+            "essential": false
+        }
+    ],
+    "clothing_recs": [
+    {
+        "name": "Windbreaker jacket",
+        "description": "Be prepared and bring a windbreaker jacket!",
+        "image": "item2.png",
+        "windCondition": true,
+        "cold": true,
+        "weatherCondition": ["windy", "cold"],
+        "essential": false
+    },
+    {
+        "name": "Beanie",
+        "description": "Keep your head and ears warm with a beanie!",
+        "image": "item9.png",
+        "windCondition": true,
+        "cold": true,
+        "weatherCondition": ["Snow", "Rain", "Cold"],
+        "essential": false
+    },
+    {
+        "name": "Hat",
+        "description": "Keep cool and out of the sun with a hat!",
+        "image": "item10.png",
+        "windCondition": false,
+        "cold": false,
+        "weatherCondition": ["Sunny"],
+        "essential": false
+    },
+    {
+        "name": "Snow shoes",
+        "description": "Snow shoes will keep your feet warm and dry during your snowy hike!",
+        "image": "item7.png",
+        "windCondition": false,
+        "cold": true,
+        "weatherCondition": ["Snow"],
+        "essential": false
+    },
+    {
+        "name": "Hiking shoes",
+        "description": "Hiking shoes are great for long hikes. They keep your feet dry and have a good grip on uneven terrains.",
+        "image": "item1.png",
+        "windCondition": false,
+        "cold": false,
+        "weatherCondition": ["sunny", "cloudy"],
+        "essential": false
+    },
+    {
+        "name": "Rain jacket",
+        "description": "There's a chance it's going to rain during your hike. Be prepared and bring a rain jacket!",
+        "image": "item8.png",
+        "windCondition": false,
+        "cold": false,
+        "weatherCondition": ["Rain"],
+        "essential": false
+    }
+    ]
+}
