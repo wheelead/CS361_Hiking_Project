@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <title>Hiking Home</title>
+{% endblock %}
+
+{% block body %}
+<div>
+    <h3>Enter your location to find hiking trails near you!</h3>
+    <form action="/Trail_List" method="post">
+        <label for="input">Zip code or address: </label>
+        <input type="text" id="input" name="input"><br>
+        <label for="radius">Within how many miles: </label>
+        <input type="number" id="radius" name="radius"><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+    <script src="{{url_for('static', filename='/scripts/home_script.js')}}"></script>
+{% endblock %}

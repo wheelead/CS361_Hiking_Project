@@ -14,19 +14,6 @@ function bindAndBuild(){
     bindButtons();
 };
 
-/* Set up the 
- * Input:   n/a
- * Output:  n/a
- * Additional Detail: 
- */
-function bindButtons(){
-// for loop to go through all buttons as needed?
-    let buttonType = "home_btn";
-    let obj = document.getElementById(buttonType);
-    obj.addEventListener("click", function(){
-        location.href = "/";
-    });
-};
 
 
 

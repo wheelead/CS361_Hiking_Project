@@ -1,7 +1,7 @@
 /*  Programmers:    
  *  Date:           
  *  Assignment:     
- *  Description:    Script to hold generic things for all pages
+ *  Description:    Index (Home) specific script
  */
 
 document.addEventListener('DOMContentLoaded', bindAndBuild);
@@ -11,8 +11,10 @@ document.addEventListener('DOMContentLoaded', bindAndBuild);
  * Output:  n/a
  */
 function bindAndBuild(){
-
+//    bindButtons();
 };
+
+
 
 
 

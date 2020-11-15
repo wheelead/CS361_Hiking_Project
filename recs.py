@@ -1,6 +1,9 @@
-import json
+import json, os
 
-with open('static/hiking_recs.json') as f:
+# added to remove relative only behaviour
+script_path = os.path.dirname(__file__)
+
+with open(script_path + "/static/hiking_recs.json") as f:
     data = json.load(f)
 
 # function takes in instance of hiking trail information 
