@@ -2,7 +2,8 @@
 
 {% block head %}
     <title>Trail List</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/trail_style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/trail_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/popup.css') }}"> 
 {% endblock %}
 
 {% block body %}
@@ -18,9 +19,23 @@
     </form>
 </div>
 
-<a href="">Click here to filter hiking trails just for you!</a>
 
-<div>
+<button class="open-button" onclick="openForm()">Filter Trails Just For You!</button>
+
+<div class="form-popup" id="myForm">
+    <form class="form-container">
+        <h1>Intro</h1>
+
+        <label for="text"><b>How Do You Want To Feel On Your Hike?</b></label>
+        <input type="text" required>
+
+        <button type="submit" class="btn">Submit</button>
+        <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+        
+    </form>
+</div>
 
     <h1>List of Trails {{ radius }} Miles from Location (Sorted Near to Far)</h1>
 
@@ -49,6 +64,18 @@
     </table>
 
     <script src="{{url_for('static', filename='/scripts/trails_script.js')}}"></script>
+
+    <!-- will move to trails_script.js -->
+    <script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+    </script>
+
 {% endblock %}
 </div>
     
