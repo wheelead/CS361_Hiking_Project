@@ -6,18 +6,19 @@
 <head>
     <meta charset="utf-8" />
     <title>fitnessTestPage</title>
-
 </head>
 {% endblock %}
 {% block body %}
 <body>
-
     <br>
+    <!--Introduction to page-->
     <center> <h2> Fitness Test</h2></center>
     <center> By filling out some basic information, we can gauge your readiness for certain trails, or even recommend some for you!</center>
     <br>
     <br>
-    <!-- <form>  -->  <center>
+    <!-- <form add GET redirect /HOME>  -->
+    <center>
+        <!--Questions user answers to get values for algorithm-->
         What is your age range?
         <br>
         <input type="radio" name="ageQ" value=0>11-30
@@ -50,12 +51,11 @@
         <input type="radio" name="medicalQ" value=0>No
         <br>
         <br>
-
-        <button type="button" onclick="displayRadioValues()">
+        <!--Button that calls function to calculate fitness-->
+        <button type="button" onclick="fitnessCalculator()">
             Test
         </button>
     </center>
-    <!--  </form>  -->
     <br>
     <br>
     <center>
@@ -63,57 +63,53 @@
     </center>
 
     <script>
-        function displayRadioValues() {
-
-            var total = 0;
+        //function that adds answer values to find fitness level
+        function fitnessCalculator() {
             var level = 0;
-            var ageTot = 0;
-            var mileTot = 0;
-            var hoursTot = 0;
-            var medA = 0;
 
+            //creates variable for age question
             var age = document.getElementsByName('ageQ');
+            //iterates through answers, if radio box checked, adds associated age value
             for (i = 0; i < age.length; i++) {
                 if (age[i].checked)
-                    var ageTot = age[i].value;
-                var a = parseInt(ageTot, 10);
+                    var ageVal = parseInt(age[i].value, 10);
             }
 
             var miles = document.getElementsByName('milesQ');
             for (i = 0; i < miles.length; i++) {
                 if (miles[i].checked)
-                    mileTot = miles[i].value;
-                var b = parseInt(mileTot, 10);
+                    var mileVal = parseInt(miles[i].value, 10);
             }
 
             var hours = document.getElementsByName('hoursQ');
             for (i = 0; i < hours.length; i++) {
                 if (hours[i].checked)
-                    hoursTot = hours[i].value;
-                var c = parseInt(hoursTot, 10);
+                    var hourVal = parseInt(hours[i].value, 10);
             }
 
             var medical = document.getElementsByName('medicalQ');
             for (i = 0; i < medical.length; i++) {
                 if (medical[i].checked)
-                    medA = medical[i].value;
-                var d = parseInt(medA, 10);
+                    var medVal = parseInt(medical[i].value, 10);
             }
 
-            total = a + b + c + d;
+            //combine answers values into total
+            var total = ageVal + mileVal + hourVal + medVal;
 
-            if (total > 11) {
+            //sort level by total
+            if (total > 10) {
                 level = "Beginner";
             }
             if (total < 5) {
                 level = "Advanced";
             }
-            if (total > 4 && total < 12) {
+            if (total > 4 && total < 11) {
                 level = "Intermediate";
             }
 
             document.getElementById("result").innerHTML
                 = "Your estimated hiking fitness is : " + level;
+            new XMLHttpRequest = ("GET", "/?lvl=" + level);
         }
     </script>
 
