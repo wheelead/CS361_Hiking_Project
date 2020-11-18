@@ -16,11 +16,12 @@ def home():
 
 
 
-@app.route("/fitness")
+@app.route("/fitness", methods=["GET"])
 def fitness():
+    if request.method == "GET":
+        level = request.form.get('level')
     return render_template("fitnessTest.html")
-if request.method == "GET":
-    level = request.form.get('level');
+
 
 
 @app.route("/Trail_List", methods=["GET", "POST"])
