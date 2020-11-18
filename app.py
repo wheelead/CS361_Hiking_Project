@@ -19,7 +19,8 @@ def home():
 @app.route("/fitness")
 def fitness():
     return render_template("fitnessTest.html")
-
+#if request.method == "GET":
+#    level = request.form.get('level');
 
 
 @app.route("/Trail_List", methods=["GET", "POST"])
