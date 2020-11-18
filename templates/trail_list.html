@@ -19,7 +19,44 @@
     </form>
 </div>
 
-
+<button class="btn-open" onclick="openForm()">Filter Trails Just For You</button>
+<div class="popup-form" id="myForm">
+        <span>Just For You!</span>
+        <label class="myToggle">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <form action="" method="get" class="form-container">
+            <label>How do you want to feel during your hike?</label>
+            <select id="userInput">
+                <option value="Chill & Easy">Chill & Easy</option>
+                <option value="Match my Fitness Level">Match my Fitness Level</option>
+                <option value="Challenge Me!">Challenge Me!</option>
+            </select><br>
+            <button type="submit" class="btn-submit">Submit</button><br>
+            <button type="button" class="btn-cancel" onclick="closeForm()">Close</button><br>
+        </form>
+</div>
+<!-- POPUP 
+<div class="popup" onclick="myFunction()">Filter Trails Just For You!
+    <div class="popuptext">
+        <form action="">
+            <p id="myPopup">How do you want to feel on your hike?</p>
+            <datalist id="userInput">
+                <option value="Chill & Easy">
+                <option value="Match my Fitness Level">
+                <option value="Challenge Me!">
+            </datalist>
+        </form>
+        
+        <div class="dropdown-content">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+        </div>
+    </div>
+</div> -->
+<!--
 <button class="open-button" onclick="openForm()">Filter Trails Just For You!</button>
 
 <div class="form-popup" id="myForm">
@@ -33,6 +70,7 @@
         <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
+-->
         
     </form>
 </div>
@@ -67,6 +105,16 @@
 
     <!-- will move to trails_script.js -->
     <script>
+    // When the user clicks on div, open the popup
+    function openForm(){
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm(){
+        document.getElementById("myForm").style.display = "none";
+    }
+    </script>
+    <!-- <script>
     function openForm() {
         document.getElementById("myForm").style.display = "block";
     }
@@ -74,7 +122,7 @@
     function closeForm() {
         document.getElementById("myForm").style.display = "none";
     }
-    </script>
+    </script>-->
 
 {% endblock %}
 </div>
