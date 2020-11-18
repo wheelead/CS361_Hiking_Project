@@ -14,6 +14,3 @@ function bindAndBuild(){
     bindButtons();
 };
 
-
-
-
