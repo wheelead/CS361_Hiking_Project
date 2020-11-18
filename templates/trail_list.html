@@ -37,44 +37,7 @@
             <button type="button" class="btn-cancel" onclick="closeForm()">Close</button><br>
         </form>
 </div>
-<!-- POPUP 
-<div class="popup" onclick="myFunction()">Filter Trails Just For You!
-    <div class="popuptext">
-        <form action="">
-            <p id="myPopup">How do you want to feel on your hike?</p>
-            <datalist id="userInput">
-                <option value="Chill & Easy">
-                <option value="Match my Fitness Level">
-                <option value="Challenge Me!">
-            </datalist>
-        </form>
         
-        <div class="dropdown-content">
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-        </div>
-    </div>
-</div> -->
-<!--
-<button class="open-button" onclick="openForm()">Filter Trails Just For You!</button>
-
-<div class="form-popup" id="myForm">
-    <form class="form-container">
-        <h1>Intro</h1>
-
-        <label for="text"><b>How Do You Want To Feel On Your Hike?</b></label>
-        <input type="text" required>
-
-        <button type="submit" class="btn">Submit</button>
-        <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
-</div>
--->
-        
-    </form>
-</div>
-
     <h1>List of Trails {{ radius }} Miles from Location (Sorted Near to Far)</h1>
 
     <table class="table">
@@ -114,15 +77,6 @@
         document.getElementById("myForm").style.display = "none";
     }
     </script>
-    <!-- <script>
-    function openForm() {
-        document.getElementById("myForm").style.display = "block";
-    }
-
-    function closeForm() {
-        document.getElementById("myForm").style.display = "none";
-    }
-    </script>-->
 
 {% endblock %}
 </div>
