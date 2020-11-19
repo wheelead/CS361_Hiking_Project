@@ -12,7 +12,7 @@
 <body>
     <br>
     <!--Introduction to page-->
-    <center> <h2> Fitness Test</h2></center>
+    <center> <h2> Fitness Test </h2></center>
     <center> By filling out some basic information, we can gauge your readiness for certain trails, or even recommend some for you!</center>
     <br>
     <br>
@@ -27,7 +27,7 @@
         <br>
         <br>
 
-        How many miles a week do you currently hike?
+        How many miles a week do you hike on average?
         <br>
         <input type="radio" name="milesQ" value=4>0
         <input type="radio" name="milesQ" value=3>1-5
@@ -101,18 +101,18 @@
             var total = ageVal + mileVal + hourVal + medVal;
 
             //sort level by total
-            if (total > 10) {
+            if (total >= 10) {
                 level = "Beginner";
             }
-            if (total < 5) {
+            if (total <= 5) {
                 level = "Advanced";
             }
-            if (total > 4 && total < 11) {
+            if (total >= 4 && total <= 11) {
                 level = "Intermediate";
             }
 
             document.getElementById("result").innerHTML
-                = "Your estimated hiking fitness is : " + level;
+                = "Your estimated hiking fitness is: " + level;
             document.getElementById("send_var").value = level;
             btn = document.createElement("input");
             btn.type = "submit";
