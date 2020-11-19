@@ -57,9 +57,13 @@
         </button>
     </center>
     <br>
-    <br>
+
     <center>
         <div id="result"> </div>
+        <br>
+        <form id="var_form" action="/" method="POST">
+            <input id="send_var" name="level" type="hidden" value="">
+        </form>
     </center>
 
     <script>
@@ -107,9 +111,13 @@
                 level = "Intermediate";
             }
 
-//            document.getElementById("result").innerHTML
-//                = "Your estimated hiking fitness is : " + level;
-            new XMLHttpRequest = ("GET", "/?lvl=" + level);
+            document.getElementById("result").innerHTML
+                = "Your estimated hiking fitness is : " + level;
+            document.getElementById("send_var").value = level;
+            btn = document.createElement("input");
+            btn.type = "submit";
+            btn.value = "Confirm";
+            document.getElementById("var_form").appendChild(btn);
         }
     </script>
 

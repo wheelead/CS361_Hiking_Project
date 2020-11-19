@@ -8,20 +8,20 @@ app = Flask(__name__)
 API_KEY = "200965658-b1cfd20b05f2212f32f16c23ff4a7c3c"
 WEATHER_API_KEY = "5dc2540a0d627e4840439a258adeb337"
 
+LEVEL="test"
 
-
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def home():
+    if request.method == "POST":
+        level = request.form.get('level')
+        global LEVEL
+        LEVEL = level
     return render_template("home.html")
 
 
-
-@app.route("/fitness", methods=["GET"])
+@app.route("/fitness")
 def fitness():
-    if request.method == "GET":
-        level = request.form.get('level')
     return render_template("fitnessTest.html")
-
 
 
 @app.route("/Trail_List", methods=["GET", "POST"])
@@ -46,6 +46,10 @@ def trail_list():
 
     return render_template("trail_list.html", tableDict = tableDict, radius = radius)
 
+
+@app.route("/details")
+def details():
+    return render_template("details.html")
 
 
 @app.route("/recs/<int:trailID>", methods=["GET", "POST"])
