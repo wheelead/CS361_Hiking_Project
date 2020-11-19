@@ -13,7 +13,7 @@
     <form method="post">
         <label for="input">Zip code or address: </label>
         <input type="text" id="input" name="input"><br>
-        <label for="radius">Within how many miles: </label>
+        <label for="radius">Search within how many miles: </label>
         <input type="number" id="radius" name="radius"><br>
         <input type="submit" value="Submit">
     </form>
@@ -38,7 +38,7 @@
         </form>
 </div>
         
-    <h1>List of Trails {{ radius }} Miles from Location (Sorted Near to Far)</h1>
+    <h1>List of Trails within {{ radius }} miles from Location (Sorted Near to Far)</h1>
 
     <table class="table">
 
