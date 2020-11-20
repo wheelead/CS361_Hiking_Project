@@ -15,9 +15,9 @@ Returns: hikingDict
 
 Function takes in instance of hiking trail information and 
 decides which recommendations to return to display on recommendations page """
-def getHikingRecs(len, condition, elevation):
+def getHikingRecs(trailDistance, condition, elevation):
     hikingElevation = setHikingElevation(elevation)
-    length = setHikingDistance(len)
+    length = setHikingDistance(trailDistance)
     hikingDict = getHikingDict(length, hikingElevation, condition)
 
     return hikingDict
@@ -30,10 +30,10 @@ def setHikingElevation(elevation):
         highElevation = False
     return highElevation
 
-def setHikingDistance(len):
-    if len < 2.0: # in miles
+def setHikingDistance(trailDistance):
+    if trailDistance < 2.0: # in miles
             length = "short"
-    elif len > 2.0 and len < 5.0:
+    elif trailDistance > 2.0 and trailDistance < 5.0:
         length = "medium"
     else:
         length = "long"
