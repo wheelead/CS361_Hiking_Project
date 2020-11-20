@@ -6,20 +6,40 @@ script_path = os.path.dirname(__file__)
 with open(script_path + "/static/hiking_recs.json") as f:
     data = json.load(f)
 
-# function takes in instance of hiking trail information 
-# decides which recommendations to return to display on recommendations page
+""" 
+Name: getHikingRecs
+Called by: app.py
+Calls: setHikingElevation, setHikingDistance, getHikingDict
+Passed: len, condition, elevation
+Returns: hikingDict
+
+Function takes in instance of hiking trail information and 
+decides which recommendations to return to display on recommendations page """
 def getHikingRecs(len, condition, elevation):
-    highElevation = False
-    if len < 2.0:
-        length = "short"
+    hikingElevation = setHikingElevation(elevation)
+    length = setHikingDistance(len)
+    hikingDict = getHikingDict(length, hikingElevation, condition)
+
+    return hikingDict
+
+def setHikingElevation(elevation):
+    # if elevation is more than 5000 ft, set highElevation to true and recommend high elevation item[s]
+    if elevation > 5000:
+        highElevation = True
+    else:
+        highElevation = False
+    return highElevation
+
+def setHikingDistance(len):
+    if len < 2.0: # in miles
+            length = "short"
     elif len > 2.0 and len < 5.0:
         length = "medium"
     else:
         length = "long"
-    
-    if elevation > 5000:
-        highElevation = True
+    return length
 
+def getHikingDict(length, highElevation, condition):
     # create empty array to hold list of recs
     recs = []
     hikingRecs = []
@@ -44,23 +64,43 @@ def getHikingRecs(len, condition, elevation):
     hikingDict["recs"] = hikingRecs
     return hikingDict
 
-# temp - float
-# windCondition - miles/hour
-# weatherCondition - Clear, Rain, Snow, Extreme
-def getWeatherRecs(temp, windCondition, weatherCondition):
-    windy = False
-    cold = False
+""" 
+Name: getWeatherRecs
+Called by: app.py
+Calls: setWindCondition, setTemp, getWeatherDict
+Passed: temp, windCondition, weatherCondition
+Returns: weatherDict
 
+temp - float
+windCondition - miles/hour
+weatherCondition - Clear, Rain, Snow, Extreme """
+def getWeatherRecs(temp, windCondition, weatherCondition):
+    windy = setWindCondition(windCondition)
+    cold = setTemp(temp)
+    weatherDict = getWeatherDict(weatherCondition)
+    # print(weatherDict)
+    return weatherDict
+
+def setWindCondition(windCondition):
+    windy = False
     if windCondition > 5:
         windy = True
+    return windy
+
+def setTemp(temp):
+    cold = False
     if temp < 65:
         cold = True
+
+def getWeatherDict(weatherCondition):
     recs = []
     weatherRecs = []
     weatherDict = dict()
     weatherDict["recs"] = []
     for rec in data["clothing_recs"]:
         if rec["windCondition"] == True:
+            recs.append(rec)
+        if rec["cold"] == True:
             recs.append(rec)
 
     # check for weatherCondition 
@@ -78,8 +118,4 @@ def getWeatherRecs(temp, windCondition, weatherCondition):
             weatherRecs.append(i)
     
     weatherDict["recs"] = weatherRecs
-    # print(weatherDict)
     return weatherDict
-
-# getHikingRecs(7.1, "Dry", 1000)
-# getWeatherRecs(40, 4, "Rain")

@@ -88,7 +88,7 @@
         "description": "Snow shoes will keep your feet warm and dry during your snowy hike!",
         "image": "item7.png",
         "windCondition": false,
-        "cold": true,
+        "cold": false,
         "weatherCondition": ["Snow"],
         "essential": false
     },
