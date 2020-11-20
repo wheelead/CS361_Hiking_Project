@@ -10,25 +10,24 @@ document.addEventListener('DOMContentLoaded', bindAndBuild);
  * Input:   n/a
  * Output:  n/a
  */
+
 function bindAndBuild(){
     bindButtons();
 };
 
 function bindButtons(){
     let openObj = document.getElementById("open");
-    openObj.addEventListener("click", function(){
-        openForm();
-    };
-    let closeObj = document.getElementById("close");
-    openObj.addEventListener("click", function(){
-        closeForm();
-    };
+    openObj.addEventListener("click", function(event){
+        document.getElementById("myForm").style.display = "block";
+    })
+    let closeObj = document.getElementById("cancel");
+    closeObj.addEventListener("click", function(event){
+        document.getElementById("myForm").style.display = "none";
+    })
 };
 
-function openForm(){
-    document.getElementById("myForm").style.display = "block";
-};
 
-function closeForm(){
-    document.getElementById("myForm").style.display = "none";
-};
+
+
+
+
