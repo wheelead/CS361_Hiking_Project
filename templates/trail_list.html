@@ -2,8 +2,8 @@
 
 {% block head %}
     <title>Trail List</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='/css/trail_style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='/css/popup.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/trail_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/popup.css') }}"> 
 {% endblock %}
 
 {% block body %}
@@ -19,7 +19,7 @@
     </form>
 </div>
 
-<button class="btn-open" onclick="openForm()">Filter Trails Just For You</button>
+<button id="open" class="btn-open">Filter Trails Just For You</button>
 <div class="popup-form" id="myForm">
         <span>Just For You!</span>
         <label class="myToggle">
@@ -34,7 +34,7 @@
                 <option value="Challenge Me!">Challenge Me!</option>
             </select><br>
             <button type="submit" class="btn-submit">Submit</button><br>
-            <button type="button" class="btn-cancel" onclick="closeForm()">Close</button><br>
+            <button type="button" id="close" class="btn-cancel">Close</button><br>
         </form>
 </div>
         
@@ -54,8 +54,8 @@
             <td> {{ i["name"] }} </td>
             <td> {{ i["summary"] }} </td>
             <td> {{ i["length"] }} </td>
-            <td><input type="button" value="Details Page"></td>
-            <td><input type="button" value="Navigate to Trailhead" onclick="window.location='/details';"></td>
+            <td><input type="button" value="Details Page" onclick="window.location='/details';"></td>
+            <td><input type="button" value="Navigate to Trailhead"></td>
             <td><input type="button" value="Gear Recommendation" name="trailID" onclick="window.location='/recs/{{i.id}}';"></td>
             <!-- button to redirect to /recs/trailID and it works!! -->
         </tr>
@@ -64,19 +64,7 @@
 
     </table>
 
-    <script src="{{url_for('static', filename='/scripts/trails_script.js')}}"></script>
-
-    <!-- will move to trails_script.js -->
-    <script>
-    // When the user clicks on div, open the popup
-    function openForm(){
-        document.getElementById("myForm").style.display = "block";
-    }
-
-    function closeForm(){
-        document.getElementById("myForm").style.display = "none";
-    }
-    </script>
+    <script src="{{url_for('static', filename='scripts/trails_script.js')}}"></script>
 
 {% endblock %}
 </div>

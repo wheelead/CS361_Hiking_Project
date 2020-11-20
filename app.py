@@ -24,7 +24,7 @@ def fitness():
     return render_template("fitnessTest.html")
 
 
-@app.route("/Trail_List", methods=["GET", "POST"])
+@app.route("/trail_List", methods=["GET", "POST"])
 def trail_list():
     tableDict = { "blank" : "blank" }
     radius = 0
