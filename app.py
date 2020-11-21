@@ -1,9 +1,16 @@
 import requests, json
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
+from flask_session import Session
 from geopy.geocoders import Nominatim
 from recs import getHikingRecs, getWeatherRecs
+from sort import sortIt
 
 app = Flask(__name__)
+
+# server side sessions to stor table data
+app.config['SESSION_TYPE'] = 'filesystem'
+Session(app)
+
 
 API_KEY = "200965658-b1cfd20b05f2212f32f16c23ff4a7c3c"
 WEATHER_API_KEY = "5dc2540a0d627e4840439a258adeb337"
@@ -26,11 +33,19 @@ def fitness():
 
 @app.route("/trail_List", methods=["GET", "POST"])
 def trail_list():
-    tableDict = { "blank" : "blank" }
-    radius = 0
-    if request.method == "POST":
+
+    if request.method == "GET" and (request.args.get('jfy') or request.args.get('lvl')) and not (session['table'] == "empty"):
+        session['table'] = sortIt(request.args.get('jfy'), request.args.get('lvl'), session['table'])
+    elif request.method == "GET" and not session['table']:
+        session['table'] = "empty"
+        session['radius'] = 0
+
+    if request.method == "POST" and request.form.get('input'):
         code = request.form.get('input') # user zip or address
-        radius = request.form.get('radius') # miles radius
+        if request.form.get('radius'):
+            session['radius'] = request.form.get('radius') # miles radius
+        else:
+            session['radius'] = 30
         geoGen = Nominatim(user_agent="hikingproject") # set up system for geocode
         place = geoGen.geocode(code)  # get lat and lon
 
@@ -39,12 +54,12 @@ def trail_list():
         # maxDistance upper bound is 300
         # maxResults upper bound is 500
         urlString += "lat={}&lon={}&maxDistance={}&key={}&sort=distance&maxResults=500"
-        finalUrl = urlString.format(place.latitude, place.longitude, radius, API_KEY)
+        finalUrl = urlString.format(place.latitude, place.longitude, session['radius'], API_KEY)
 
-        # dictionary holding response data
-        tableDict = json.loads(requests.get(finalUrl).content)
+        # session dictionary holding response data
+        session['table'] = json.loads(requests.get(finalUrl).content)
 
-    return render_template("trail_list.html", tableDict = tableDict, radius = radius)
+    return render_template("trail_list.html", tableDict = session['table'], radius = session['radius'])
 
 
 @app.route("/details")

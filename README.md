@@ -13,6 +13,7 @@ python3 -m venv venv
 pip install Flask
 pip install requests
 pip install geopy
+pip install Flask-Session
 -->
 
 To run the flask application: 
@@ -27,6 +28,7 @@ You must have Python 3 installed and the following modules:
 * flask
 * requests
 * geopy
+* Flask-Session
 </code></pre>
 
 <!--

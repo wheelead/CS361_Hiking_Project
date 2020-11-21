@@ -22,16 +22,17 @@
 <button id="open" class="btn-open">Filter Trails Just For You</button>
 <div class="popup-form" id="myForm">
     <span>Just For You!</span>
-    <label class="myToggle">
-        <input type="checkbox">
-        <span class="slider round"></span>
-    </label>
     <form action="" method="get" class="form-container">
+        <label class="myToggle">
+            <input type="checkbox" name="jfy" value="checked">
+            <span class="slider round"></span>
+        </label>
         <label>How do you want to feel during your hike?</label>
-        <select id="userInput">
-            <option value="Chill & Easy">Chill & Easy</option>
-            <option value="Match my Fitness Level">Match my Fitness Level</option>
-            <option value="Challenge Me!">Challenge Me!</option>
+        <select id="userInput" name="lvl">
+            <option>None</option>
+            <option value="1">Chill & Easy</option>
+            <option value="2">Match my Fitness Level</option>
+            <option value="3">Challenge Me!</option>
         </select><br>
         <button type="submit" class="btn-submit">Submit</button><br>
         <button type="button" id="cancel" class="btn-cancel">Close</button><br>
