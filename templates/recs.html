@@ -5,45 +5,41 @@
 {% endblock %}
 
 {% block body %}
-<div>
-<h1>Gear & Clothing Recommendations</h1>
+<div class="container">
+    <h1>Gear & Clothing Recommendations</h1>
 
-<div class="row">
-{% for i in hikingRecs["recs"] %}
-    <div class="col-xs-12 col-sm-4">
-        <h2>{{ i["name"] }}</h2>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <h3>{{ i["description"] }}</h3>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <img src="../static/img/{{ i["image"] }}" alt={{ i.name }} width="250" height="250" />
-    </div>
-{% endfor %} 
-</div>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-gear-tab" data-toggle="tab" href="#nav-gear" role="tab" aria-controls="nav-gear" aria-selected="true">Gear</a>
+            <a class="nav-item nav-link" id="nav-clothing-tab" data-toggle="tab" href="#nav-clothing" role="tab" aria-controls="nav-clothing" aria-selected="false">Clothing</a>
+        </div>
+    </nav>
 
-<div class="row">
-{% for i in weatherRecs["recs"] %}
-    <div class="col-xs-12 col-sm-4">
-        <h2>{{ i["name"] }}</h2>
+    <div class="tab-content text-center" id="nav-tabContent">
+        <div class="tab-pane fade show active row" id="nav-gear" role="tabpanel" aria-labelledby="nav-gear-tab">
+            <div class="col">
+            {% for i in hikingRecs["recs"] %}
+                <h2>{{ i["name"] }}</h2>
+                <h4>{{ i["description"] }}</h4>
+            </div>
+            <div class="col">
+                <img src="../static/img/{{ i["image"] }}" alt={{ i.name }} width="250" height="250" />
+            {% endfor %}
+            </div>
+        </div>
+        <div class="tab-pane fade row" id="nav-clothing" role="tabpanel" aria-labelledby="nav-clothing-tab">
+            <div class="col">
+            {% for i in weatherRecs["recs"] %}
+                <h2>{{ i["name"] }}</h2>
+                <h4>{{ i["description"] }}</h4>
+            </div>
+            <div class="col">
+                <img src="../static/img/{{ i["image"] }}" alt={{ i.name }} width="250" height="250" />
+            {% endfor %}
+            </div>
+        </div>
     </div>
-    <div class="col-xs-12 col-sm-4">
-        <h3>{{ i["description"] }}</h3>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <img src="../static/img/{{ i["image"] }}" alt={{ i.name }} width="250" height="250" />
-    </div>
-{% endfor %} 
-</div>
-    
-
-
-<!-- {% for i in weatherRecs["recs"] %}
-<h2>{{ i["name"] }}</h2>
-<h3>{{ i["description"] }}</h3>
-<img src="../static/img/{{ i["image"] }}" alt={{ i.name }} width="250" height="250" />
-{% endfor %} -->
-
 
 </div>
+
 {% endblock %}

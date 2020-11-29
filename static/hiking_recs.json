@@ -29,7 +29,7 @@
         },
         {
             "name": "Snacks",
-            "description": "description of item",
+            "description": "Keep your energy up with snacks throughout your hike! Energy bars, trail mix, and granola are good options.",
             "image": "item6.png",
             "length": "long",
             "elevation": false,
