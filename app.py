@@ -35,7 +35,7 @@ def fitness():
 def trail_list():
 
     if request.method == "GET" and (request.args.get('jfy') or request.args.get('lvl')) and not (session['table'] == "empty"):
-        session['table'] = sortIt(request.args.get('jfy'), request.args.get('lvl'), session['table'])
+        session['table'] = sortIt(request.args.get('jfy'), request.args.get('lvl'), session['table'], LEVEL)
     elif request.method == "GET" and not session['table']:
         session['table'] = "empty"
         session['radius'] = 0
@@ -60,6 +60,11 @@ def trail_list():
         session['table'] = json.loads(requests.get(finalUrl).content)
 
     return render_template("trail_list.html", tableDict = session['table'], radius = session['radius'])
+    # dictionary holding response data
+    tableDict = json.loads(requests.get(finalUrl).content)
+    tableFilter = dict()
+    tableFilter = json.loads(requests.get(finalUrl).content)
+    print(tableFilter);
 
 
 @app.route("/details")

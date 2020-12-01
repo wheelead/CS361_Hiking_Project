@@ -1,59 +1,50 @@
 import json
 
-def sortByDifficulty(trailsDic, value):
-	listOfKeys = list()
-	listOfItems = trailsDic.items()
-	for item in listOfItems:
-		if item[1] == value:
-			listOfKeys.append(item[0])
-	return listOfKeys
+def sortByDifficulty(trailsDict, trailsList, calcDifficulty):
+	for trail in trailsDict['trails']:
+		if trail['difficulty'] == calcDifficulty:
+			trailsList.append(trail)
 
-def sortIt(jfy, lvl, tableDict):
-	# logic to sort data
+	trailsDict['trails'] = trailsList
+	
+	return trailsDict
+
+def sortIt(jfy, lvl, tableDict, fitLevel):
+	#fitness level = begginer by default
+	fitnessLevel = 1
+
+	#calculate the hike difficulty
+	if fitLevel == "Begginer":
+		fitnessLevel = 1
+	elif fitLevel == "Intermediate":
+		fitnessLevel = 2
+	elif fitLevel == "Advanced":
+		fitnessLevel = 3
+	
+	hikeDifficulty = fitnessLevel + int(lvl)
+	#print(hikeDifficulty) 
+
+	#create an empty list to hold filtered trails
+	filtered_trails = []
+
+	#see if toggle for filter is turned on
 	if jfy == "checked":
-		if lvl == "1":
-			#makes it easier to read the info about the trails
-			json_object = json.dumps(tableDict, indent = 2)
-			print(json_object)
-			#print(type(json_object))			#string
-			#print(type(tableDict))				#dict
-			#print(type(tableDict['trails']))	#list
 
-			#create an empty dictonary to hold filtered results
-			filtered_trails = []
-
-			#iterate through tableDict to get individual trails
-			for trail in tableDict['trails']:
-				if trail['difficulty'] == 'green':
-				    filtered_trails.append(trail) 		#only one match gets added
-					#filtered_trails.update(trail)	#only last match gets added
-
-			print("filtered trails")
-			print(filtered_trails)
-
-
-			##print dict
-			#for item in tableDict.items():
-			#	print(item)
-			
-			##print dict
-			#for k, v in tableDict.items():
-			#	print(k, v)
-			
-			##print dict
-			#for key, value in sorted(tableDict.items(), key=lambda x: x):
-			#	print(key, value)
-
-			##returns true
-			#print(any(trails['difficulty'] == 'green' for trails in tableDict['trails']))
-			tableDict['trails'] = filtered_trails
-
-		elif lvl == "2":
-			print("sort Match my Level")
+		#use the hike difficulty calculation from above to match with given trail difficulty
+		if hikeDifficulty == 2:
+			tableDict = sortByDifficulty(tableDict, filtered_trails, 'green')
+		elif hikeDifficulty == 3:
+			tableDict = sortByDifficulty(tableDict, filtered_trails, 'greenBlue')
+		elif hikeDifficulty == 4:
+			tableDict = sortByDifficulty(tableDict, filtered_trails, 'blue')
+		elif hikeDifficulty == 5:
+			tableDict = sortByDifficulty(tableDict, filtered_trails, 'blueBlack')
+		elif hikeDifficulty == 6:
+			tableDict = sortByDifficulty(tableDict, filtered_trails, 'black')
 		else:
-			print("sort Challenge Me!")
-	else:
-		print("NO!")
+			print("OVER 9000!")
+			
+	#else toggle for filter is turned off
+	#do nothing
 
-#	tableDict['trails'] = filtered_trails # to be done after sorting implementd in all methods
 	return tableDict
