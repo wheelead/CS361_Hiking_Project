@@ -1,10 +1,14 @@
 import json
 
 def sortByDifficulty(trailsDict, trailsList, calcDifficulty):
+	
+	#get a single trail from the trails dictionary 
 	for trail in trailsDict['trails']:
 		if trail['difficulty'] == calcDifficulty:
+			#only add the trails that match the difficulty color given
 			trailsList.append(trail)
 
+	#add our new filtered list to the dictionary 
 	trailsDict['trails'] = trailsList
 	
 	return trailsDict
