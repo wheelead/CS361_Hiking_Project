@@ -1,0 +1,23 @@
+#homeAlign {
+    margin: auto;
+    max-width: 1680px;
+}
+
+#homeHead {
+    padding-bottom: 20px;
+}
+
+#placef {
+    margin-left: 35px;
+    width: 500px;
+}
+
+#rangef {
+    margin-left: 10px;
+    width: 100px;
+}
+
+#subButton {
+    margin-top: 20px;
+    margin-left: 20px;
+}

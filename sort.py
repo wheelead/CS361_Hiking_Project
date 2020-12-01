@@ -20,12 +20,12 @@ def sortIt(jfy, lvl, tableDict):
 			#print(type(tableDict['trails']))	#list
 
 			#create an empty dictonary to hold filtered results
-			filtered_trails = dict()
+			filtered_trails = []
 
 			#iterate through tableDict to get individual trails
 			for trail in tableDict['trails']:
 				if trail['difficulty'] == 'green':
-					filtered_trails = trail 		#only one match gets added
+				    filtered_trails.append(trail) 		#only one match gets added
 					#filtered_trails.update(trail)	#only last match gets added
 
 			print("filtered trails")
@@ -46,7 +46,7 @@ def sortIt(jfy, lvl, tableDict):
 
 			##returns true
 			#print(any(trails['difficulty'] == 'green' for trails in tableDict['trails']))
-			
+			tableDict['trails'] = filtered_trails
 
 		elif lvl == "2":
 			print("sort Match my Level")
@@ -54,4 +54,6 @@ def sortIt(jfy, lvl, tableDict):
 			print("sort Challenge Me!")
 	else:
 		print("NO!")
+
+#	tableDict['trails'] = filtered_trails # to be done after sorting implementd in all methods
 	return tableDict
