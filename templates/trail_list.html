@@ -56,7 +56,7 @@
                     <td> {{ i["summary"] }} </td>
                     <td> {{ i["length"] }} </td>
                     <td><input type="button" value="Details Page" onclick="window.location='/details';"></td>
-                    <td><input type="button" value="Navigate to Trailhead" onclick="location.href='http://www.google.com/maps/place/{{i.id.lat}},{{i.id.lon}}';"></td>
+                    <td><input type="button" value="Navigate to Trailhead" onclick="location.href='http://www.google.com/maps/place/{{ i["lat"] }},{{ i["lon"] }}';"></td>
                     <td><input type="button" value="Gear Recommendation" name="trailID" onclick="window.location='/recs/{{i.id}}';"></td>
                     <!-- button to redirect to /recs/trailID and it works!! -->
                 </tr>
