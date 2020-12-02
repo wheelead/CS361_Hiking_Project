@@ -1,3 +1,7 @@
+# Created for CS 361 by team "To Be Determined"
+# Chelsea Satterwhite, Adam Wheeler, Diane Nguyen, Colin Kasowski, and Nick Dal
+# File creater and owner: Diane Nguyen
+
 import json, os
 
 # added to remove relative only behaviour

@@ -1,2 +1,38 @@
+/* Created for CS 361 by team "To Be Determined" */
+/* Chelsea Satterwhite, Adam Wheeler, Diane Nguyen, Colin Kasowski, and Nick Dal */
 
+#trailAlign {
+    margin: auto;
+    max-width: 1680px;
+}
 
+#trailHead {
+    padding-bottom: 20px;
+}
+
+#placef {
+    margin-left: 35px;
+    width: 500px;
+}
+
+#rangef {
+    margin-left: 10px;
+    width: 100px;
+}
+
+#subButton, #open {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+#tableTitle {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#tableBounds {
+    max-height: 700px;
+    overflow: scroll;
+    padding: 0px 0px 0px 0px;
+}

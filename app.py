@@ -1,3 +1,6 @@
+# Created for CS 361 by team "To Be Determined"
+# Chelsea Satterwhite, Adam Wheeler, Diane Nguyen, Colin Kasowski, and Nick Dal
+
 import requests, json
 from flask import Flask, render_template, request, session
 from flask_session import Session
@@ -11,34 +14,42 @@ app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
-
+# external API keys
 API_KEY = "200965658-b1cfd20b05f2212f32f16c23ff4a7c3c"
 WEATHER_API_KEY = "5dc2540a0d627e4840439a258adeb337"
 
-LEVEL="test"
+# global variables
+LEVEL = "test"
+INITIAL = "start"
 
+# routing logic for the home page
 @app.route("/", methods=["GET", "POST"])
 def home():
+    global INITIAL
+    if INITIAL == "start":
+        INITIAL = "started"
+        session.clear()
+        session['table'] = "empty"
+        session['radius'] = 0
+
     if request.method == "POST":
         level = request.form.get('level')
         global LEVEL
         LEVEL = level
+
     return render_template("home.html")
 
-
+# routing logic for the fitness test page
 @app.route("/fitness")
 def fitness():
     return render_template("fitnessTest.html")
 
-
+# routing logic for the trail list page
 @app.route("/trail_List", methods=["GET", "POST"])
 def trail_list():
 
     if request.method == "GET" and (request.args.get('jfy') or request.args.get('lvl')) and not (session['table'] == "empty"):
         session['table'] = sortIt(request.args.get('jfy'), request.args.get('lvl'), session['table'], LEVEL)
-    elif request.method == "GET" and not session['table']:
-        session['table'] = "empty"
-        session['radius'] = 0
 
     if request.method == "POST" and request.form.get('input'):
         code = request.form.get('input') # user zip or address
@@ -60,21 +71,15 @@ def trail_list():
         session['table'] = json.loads(requests.get(finalUrl).content)
 
     return render_template("trail_list.html", tableDict = session['table'], radius = session['radius'])
-    # dictionary holding response data
-    tableDict = json.loads(requests.get(finalUrl).content)
-    tableFilter = dict()
-    tableFilter = json.loads(requests.get(finalUrl).content)
-    print(tableFilter);
 
-
+# routing logic for the details page
 @app.route("/details")
 def details():
     return render_template("details.html")
 
-
+# routing logic for recomendations page
 @app.route("/recs/<int:trailID>", methods=["GET", "POST"])
 def recommendations(trailID):
-    # print(trailID)
 
     # trail_id = 7017772 # potato chip rock
     hikingUrlString = "https://www.hikingproject.com/data/get-trails-by-id?ids={}&key={}"
@@ -88,13 +93,10 @@ def recommendations(trailID):
         lat = trail["latitude"]
         lon = trail["longitude"]
 
-    # print(length, hikingCondition, elevation, lat, lon)
-
     # get weather data using hiking coords
     weatherUrlString = "http://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}&units=imperial"
     weatherFinalUrl = weatherUrlString.format(lat, lon, WEATHER_API_KEY)
     weatherData = json.loads(requests.get(weatherFinalUrl).content)
-    # print(weatherData)
 
     main = weatherData["main"]
     temp = main["temp"] # degrees fahrenheit 
@@ -107,6 +109,5 @@ def recommendations(trailID):
 
     hikingRecs = getHikingRecs(length, hikingCondition, elevation) # returned dict
     weatherRecs = getWeatherRecs(temp, windCondition, weatherCondition) # returned dict 
-#    print(hikingRecs)
-#    print(weatherRecs)
+
     return render_template("recs.html", hikingRecs=hikingRecs, weatherRecs=weatherRecs)

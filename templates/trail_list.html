@@ -8,63 +8,63 @@
 
 {% block body %}
 
-<div>
-    <h3>Enter a new location to update list.</h3>
+<div id="trailAlign">
+    <h3 id="trailHead">Enter a new location to update list.</h3>
     <form method="post">
-        <label for="input">Zip code or address: </label>
-        <input type="text" id="input" name="input"><br>
-        <label for="radius">Search within how many miles: </label>
-        <input type="number" id="radius" name="radius"><br>
-        <input type="submit" value="Submit">
+        <label id="placet" for="input">Zip code or address: </label>
+        <input id="placef" type="text" name="input"><br>
+        <label id="ranget" for="radius">Within how many miles: </label>
+        <input id="rangef" type="number" name="radius"><br>
+        <input id="subButton" type="submit" value="Find Trails">
     </form>
-</div>
 
-<button id="open" class="btn-open">Filter Trails Just For You</button>
-<div class="popup-form" id="myForm">
-    <span>Just For You!</span>
-    <form action="" method="get" class="form-container">
-        <label class="myToggle">
-            <input type="checkbox" name="jfy" value="checked">
-            <span class="slider round"></span>
-        </label>
-        <label>How do you want to feel during your hike?</label>
-        <select id="userInput" name="lvl">
-            <option>None</option>
-            <option value="1">Chill & Easy</option>
-            <option value="2">Match my Fitness Level</option>
-            <option value="3">Challenge Me!</option>
-        </select><br>
-        <button type="submit" class="btn-submit">Submit</button><br>
-        <button type="button" id="cancel" class="btn-cancel">Close</button><br>
-    </form>
-</div>
+    <button id="open" class="btn-open">Filter Trails Just For You</button>
+    <div class="popup-form" id="myForm">
+        <span>Just For You!</span>
+        <form action="" method="get" class="form-container">
+            <label class="myToggle">
+                <input type="checkbox" name="jfy" value="checked">
+                <span class="slider round"></span>
+            </label>
+            <label>How do you want to feel during your hike?</label>
+            <select id="userInput" name="lvl">
+                <option>None</option>
+                <option value="1">Chill & Easy</option>
+                <option value="2">Match my Fitness Level</option>
+                <option value="3">Challenge Me!</option>
+            </select><br>
+            <button type="submit" class="btn-submit">Submit</button><br>
+            <button type="button" id="cancel" class="btn-cancel">Close</button><br>
+        </form>
+    </div>
         
-<h1>List of Trails within {{ radius }} miles from Location (Sorted Near to Far)</h1>
+<h1 id="tableTitle">List of Trails within {{ radius }} miles from Location</h1>
 
-<table class="table">
+<div id="tableBounds">
+    <table class="table">
 
-    <thead class="thead-dark">
-        <tr>
-            <th>Name</th><th>Summary</th><th>Length (mi)</th><th>Additional Details</th><th>View Trailhead</th><th>Find Equipment Recommendations</th>
-        </tr>
-    </thead>
-    
-    {% for i in tableDict["trails"] %}
-        <tbody>
+        <thead class="thead-dark">
             <tr>
-                <td> {{ i["name"] }} </td>
-                <td> {{ i["summary"] }} </td>
-                <td> {{ i["length"] }} </td>
-                <td><input type="button" value="Details Page" onclick="window.location='/details';"></td>
-                <td><input type="button" value="Navigate to Trailhead"></td>
-                <td><input type="button" value="Gear Recommendation" name="trailID" onclick="window.location='/recs/{{i.id}}';"></td>
-                <!-- button to redirect to /recs/trailID and it works!! -->
+                <th>Name</th><th>Summary</th><th>Length (mi)</th><th>Additional Details</th><th>View Trailhead</th><th>Find Equipment Recommendations</th>
             </tr>
-        </tbody>
-    {% endfor %}    
+        </thead>
 
-</table>
+        {% for i in tableDict["trails"] %}
+            <tbody>
+                <tr>
+                    <td> {{ i["name"] }} </td>
+                    <td> {{ i["summary"] }} </td>
+                    <td> {{ i["length"] }} </td>
+                    <td><input type="button" value="Details Page" onclick="window.location='/details';"></td>
+                    <td><input type="button" value="Navigate to Trailhead"></td>
+                    <td><input type="button" value="Gear Recommendation" name="trailID" onclick="window.location='/recs/{{i.id}}';"></td>
+                    <!-- button to redirect to /recs/trailID and it works!! -->
+                </tr>
+            </tbody>
+        {% endfor %}    
 
+    </table>
+</div>
 <script src="{{url_for('static', filename='scripts/trails_script.js')}}"></script>
 
 {% endblock %}

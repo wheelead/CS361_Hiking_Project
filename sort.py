@@ -1,3 +1,7 @@
+# Created for CS 361 by team "To Be Determined"
+# Chelsea Satterwhite, Adam Wheeler, Diane Nguyen, Colin Kasowski, and Nick Dal
+# File creater and owner: Chelsea Satterwhite
+
 import json
 
 def sortByDifficulty(trailsDict, trailsList, calcDifficulty):

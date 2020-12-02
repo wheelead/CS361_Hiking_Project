@@ -1,20 +1,12 @@
-/*  Programmers:    
- *  Date:           
- *  Assignment:     
- *  Description:    Trails specific script
- */
+// Created for CS 361 by team "To Be Determined"
+// Chelsea Satterwhite, Adam Wheeler, Diane Nguyen, Colin Kasowski, and Nick Dal
 
-document.addEventListener('DOMContentLoaded', bindAndBuild);
+document.addEventListener('DOMContentLoaded', bindButtons);
 
-/* Initiating the binding functions
+/* Binding Function for the Buttons
  * Input:   n/a
  * Output:  n/a
  */
-
-function bindAndBuild(){
-    bindButtons();
-};
-
 function bindButtons(){
     let openObj = document.getElementById("open");
     openObj.addEventListener("click", function(event){
