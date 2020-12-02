@@ -73,8 +73,25 @@ def trail_list():
     return render_template("trail_list.html", tableDict = session['table'], radius = session['radius'])
 
 # routing logic for the details page
-@app.route("/details")
-def details():
+@app.route("/details/<int:trailID>", methods=["GET", "POST"])
+def details(trailID):
+    
+    # trail_id = 7017772 # potato chip rock
+    hikingUrlString = "https://www.hikingproject.com/data/get-trails-by-id?ids={}&key={}"
+    hikingFinalURL = hikingUrlString.format(trailID, API_KEY)
+    trailData = json.loads(requests.get(hikingFinalUrl).content)
+    
+    for trail in trailData["trails"]:
+        name = trail["name"]
+        length = trail["length"]
+        description = trail["summary"]
+        lat = trail["latitude"]
+        lon = trail["longitude"]
+        elevation = trail["high"] - trail["low"]
+        conditions = trail["conditionDetails"]
+        
+    trailDetails = getTrailDetails(name, length, description, lat, lon, elevation, conditions)
+        
     return render_template("details.html")
 
 # routing logic for recomendations page
