@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container-sm pt-3">
     <h1>Gear & Clothing Recommendations</h1>
 
     <nav>
@@ -15,28 +15,20 @@
         </div>
     </nav>
 
-    <div class="tab-content text-center" id="nav-tabContent">
-        <div class="tab-pane fade show active row" id="nav-gear" role="tabpanel" aria-labelledby="nav-gear-tab">
-            <div class="col">
-            {% for i in hikingRecs["recs"] %}
-                <h2>{{ i["name"] }}</h2>
-                <h4>{{ i["description"] }}</h4>
-            </div>
-            <div class="col">
-                <img src="../static/img/{{ i["image"] }}" alt={{ i.name }} width="250" height="250" />
-            {% endfor %}
-            </div>
+    <div class="tab-content pl-5 pr-5 row" id="nav-tabContent">
+        <div class="tab-pane fade show active col" id="nav-gear" role="tabpanel" aria-labelledby="nav-gear-tab">
+        {% for i in hikingRecs["recs"] %}
+            <h3>{{ i["name"] }}</h3>
+            <h5>{{ i["description"] }}</h5>
+            <img src="../static/img/{{ i["image"] }}" alt={{ i.name }} width="250" height="250" />
+        {% endfor %}
         </div>
-        <div class="tab-pane fade row" id="nav-clothing" role="tabpanel" aria-labelledby="nav-clothing-tab">
-            <div class="col">
-            {% for i in weatherRecs["recs"] %}
-                <h2>{{ i["name"] }}</h2>
-                <h4>{{ i["description"] }}</h4>
-            </div>
-            <div class="col">
-                <img src="../static/img/{{ i["image"] }}" alt={{ i.name }} width="250" height="250" />
-            {% endfor %}
-            </div>
+        <div class="tab-pane fade col" id="nav-clothing" role="tabpanel" aria-labelledby="nav-clothing-tab">
+        {% for i in weatherRecs["recs"] %}
+            <h3>{{ i["name"] }}</h3>
+            <h5>{{ i["description"] }}</h5>
+            <img src="../static/img/{{ i["image"] }}" alt={{ i.name }} width="250" height="250" />
+        {% endfor %}
         </div>
     </div>
 
