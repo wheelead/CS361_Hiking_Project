@@ -8,19 +8,26 @@
 
     <div class="main-content-container">
         <h1>Trail Details Page</h1>
-        
-        <% for i in tableDict["trails"] %>
-            
-        
-            <div class="row details-page-content">
-                <div class="col-xs-12 mb-2">
-                    <div class="title" class="position-relative">
-                        <h1 id="trail title" class>
-                            {{ i["name"] }}
-                        </h1>
-                    </div>
+        <div class="row details-page-content">
+            <div class="col-xs-12 mb-2">
+                <div class="title" class="position-relative">
+                    <h1 id="trail title" class>
+                        "Trail Name here"
+                        #{{ trail.name }}
+                    </h1>
                 </div>
-            </div>                
-        </div>
+                <div class="stats">
+                    <h3 class="inline mr-2">
+                        "Description: "
+                        <span class="font-body pl-half">Description here</span>
+                    </h3>
+                    <h3 class="mr-2 inline">
+                        "Altitude Change: "
+                        <span class="font-body pl-half">Height here</span>
+                    </h3>
+                </div>
+            </div>
+        </div>                
+    </div>
 
 {% endblock %}
