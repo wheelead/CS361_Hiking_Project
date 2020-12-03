@@ -101,16 +101,27 @@
             var total = ageVal + mileVal + hourVal + medVal;
 
             //sort level by total
+            
+            //BACKUP CALCULATOR INCASE CHELSEA NEEDS 5 LEVELS, swap comment blocks with line of code below
+            //if (total >= 13) {
             if (total >= 10) {
                 level = "Beginner";
             }
+            //if (total >= 10 && total <= 12) {
             if (total <= 5) {
+                //level = "Intermediate-Beginner"
                 level = "Advanced";
             }
+            //if (total >= 5 && total < 10) {
             if (total >= 4 && total <= 11) {
                 level = "Intermediate";
             }
-
+            //if (total >= 3 && total <= 4) {
+                //level = "Advanced-Intermediate";
+            //}
+            //if (total >= 1 && total <= 2) {
+                //level = "Advanced";
+            //}
             document.getElementById("result").innerHTML
                 = "Your estimated hiking fitness is: " + level;
             document.getElementById("send_var").value = level;
