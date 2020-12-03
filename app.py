@@ -7,6 +7,7 @@ from flask_session import Session
 from geopy.geocoders import Nominatim
 from recs import getHikingRecs, getWeatherRecs
 from sort import sortIt
+from details import getTrailDetails
 
 app = Flask(__name__)
 
@@ -44,6 +45,11 @@ def home():
 def fitness():
     return render_template("fitnessTest.html")
 
+# routing logic for the About page
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 # routing logic for the trail list page
 @app.route("/trail_List", methods=["GET", "POST"])
 def trail_list():
@@ -78,10 +84,11 @@ def details(trailID):
     
     # trail_id = 7017772 # potato chip rock
     hikingUrlString = "https://www.hikingproject.com/data/get-trails-by-id?ids={}&key={}"
-    hikingFinalURL = hikingUrlString.format(trailID, API_KEY)
+    hikingFinalUrl = hikingUrlString.format(trailID, API_KEY)
     trailData = json.loads(requests.get(hikingFinalUrl).content)
     
     for trail in trailData["trails"]:
+        ID = trail["id"]
         name = trail["name"]
         length = trail["length"]
         description = trail["summary"]
@@ -89,8 +96,9 @@ def details(trailID):
         lon = trail["longitude"]
         elevation = trail["high"] - trail["low"]
         conditions = trail["conditionDetails"]
+        location = trail["location"]
         
-    trailDetails = getTrailDetails(name, length, description, lat, lon, elevation, conditions)
+    trailDetails = getTrailDetails( ID, name, length, description, lat, lon, elevation, conditions, location)
         
     return render_template("details.html", trailDetails=trailDetails)
 
