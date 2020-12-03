@@ -92,7 +92,7 @@ def details(trailID):
         
     trailDetails = getTrailDetails(name, length, description, lat, lon, elevation, conditions)
         
-    return render_template("details.html")
+    return render_template("details.html", trailDetails=trailDetails)
 
 # routing logic for recomendations page
 @app.route("/recs/<int:trailID>", methods=["GET", "POST"])
