@@ -12,20 +12,38 @@
             <div class="col-xs-12 mb-2">
                 <div class="title" class="position-relative">
                     <h1 id="trail title" class>
-                        "Trail Name here"
-                        #{{ trail.name }}
+                        <b><i>{{ trailDetails["name"] }}</i></b>
+                        
                     </h1>
+                    <h2 id="trail location" class>
+                        {{ trailDetails["location"] }}
+                    </h2>
                 </div>
-                <div class="stats">
+                <span style="padding-left:68px;">
                     <h3 class="inline mr-2">
-                        "Description: "
-                        <span class="font-body pl-half">Description here</span>
+                        <b>Length: </b>
+                        <span class="font-body pl-half">{{ trailDetails["length"] }} miles </span>
+                        <b>Latitude: </b>
+                        <span class="font-body pl-half">{{ trailDetails["lat"] }}</span>
+                        <b>Longitude: </b>
+                        <span class="font-body pl-half">{{ trailDetails["lon"] }}</span>
                     </h3>
                     <h3 class="mr-2 inline">
-                        "Altitude Change: "
-                        <span class="font-body pl-half">Height here</span>
+                        <b>Description: </b>
+                        <span class="font-body pl-half">{{ trailDetails["description"] }}</span>
                     </h3>
-                </div>
+                    <h3 class="inline mr-2">
+                        <b>Altitude Change: </b>
+                        <span class="font-body pl-half">{{ trailDetails["elevation"] }} ft </span>
+                    </h3>
+                    <h3 class="inline mr-2">
+                        <b>Current Conditions: </b>
+                        <span class="font-body pl-half">{{ trailDetails["conditions"] }}</span>
+                    </h3>
+                </span>
+                <br>
+                <input type="button" value="Navigate to Trailhead" onclick="location.href='http://www.google.com/maps/place/{{ trailDetails["lat"] }},{{ trailDetails["lon"] }}';">
+                <input type="button" value="Gear Recommendation" name="trailID" onclick="window.location='/recs/{{ trailDetails["ID"] }}';">
             </div>
         </div>                
     </div>
